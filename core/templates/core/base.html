@@ -1,0 +1,68 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% block title %} <title>COOKBOOK</title> {% endblock %}
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+    <script src="{% static 'main.js' %}" defer></script>
+  </head>
+  <body>
+    <nav>
+      <div class="logo">
+        <a href="{% url 'index' %}"><strong>COOKBOOK</strong></a>
+      </div>
+      {% if user.is_authenticated %}
+
+      <form action="{% url 'search_results' %}" method="GET" class="search-form">
+        <input type="text" name="q" id="search" placeholder="Search here">
+        <button type="submit" class="search-button">SEARCH</button>
+      </form>
+
+      <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        <button type="submit" class="logout">Logout</button>
+      </form>
+      {% else %}
+      <form action="{% url 'search_results' %}" method="GET" class="search-form">
+        <input type="text" name="q" id="search" placeholder="Search here">
+        <button type="submit" class="search-button">SEARCH</button>
+      </form>
+      <div class="buttons">
+        <div>
+          <button class="login">
+            <a href="{% url 'login' %}">LOG IN</a>
+          </button>
+        </div>
+        <div>
+          <button class="register">
+            <a href="{% url 'register' %}">REGISTER</a>
+          </button>
+        </div>
+      </div>
+      {% endif %}
+    </nav>
+    <div class="main">
+      {% if user.is_authenticated %}
+      <div class="menu">
+        <div class='all'><a href="{% url 'all_recipe_list' %}">ALL RECIPES</a></div>
+        <div class='create'><a href="{% url 'create_recipe' %}">CREATE</a></div>
+        <div class='profile'><a href="{% url 'user_recipe_list' %}">{{user.name|upper}}'S PROFILE</a></div>
+      </div>
+      {% else %}
+      <div class="menu">
+      <div class='all'><a href="{% url 'all_recipe_list' %}">ALL RECIPES</a></div>
+      <div class="about"><a href="{% url 'about' %}">ABOUT US</a></div>
+      </div>
+      <br>
+      <div class="text">You are navigating as an anonimous guest!
+      
+      </div>
+      
+      {% endif %} {% block content %} {% endblock %}
+    </div>
+    <footer>@COPYRIGHT 2024 TIRANE</footer>
+  </body>
+</html>

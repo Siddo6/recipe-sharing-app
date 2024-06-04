@@ -1,0 +1,12 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+
+<h4>Create Comment</h4>
+  <form method="post" action="{% url 'create_comments'  recipe.id %}" class="create_comment_form" id="commentForm">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" id="comment">COMMENT</button>
+  </form>
+
+{% endblock %}

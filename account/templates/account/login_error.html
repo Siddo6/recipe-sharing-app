@@ -1,0 +1,29 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<div class="about">
+    <h1>LOG IN</h1>
+    <div>
+    <div class="error">Something went wrong</div>
+    <div class="error">Check your credentials, if you dont have an account, <a href="{% url 'register' %}"><u>REGISTER</u></a> first.</div> <br>
+    </div>
+    <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+
+        <div>
+            <label>E-mail</label><br>
+            <input name="email" type="email" required>
+        </div>
+
+        <div>
+            <label>Password</label><br>
+            <input name="password1" type="password" required>
+        </div>
+<br>
+<br>
+        <div>
+            <button class="login_button">LOG IN</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

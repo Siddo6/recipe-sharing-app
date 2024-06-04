@@ -1,0 +1,12 @@
+<!-- recipe_list.html -->
+{% extends 'core/base.html' %}
+
+{% block content %}
+    <h3>YOU CAN BROWSE HERE ALL THE RECIPES CREATED BY ALL USERS</h3>
+    <div class="go_back"><button class="back" id="back">Go back</button></div>
+    <ul>
+        {% for recipe in recipes %}
+            <li><a href="{% url 'recipe_detail' recipe.id %}">{{ recipe.title|upper }} - {{ recipe.get_category_display}} - Created by {{ recipe.created_by.name|title }} - Visited {{ recipe.visit_count }} times</a></li><br>
+        {% endfor %}
+    </ul>
+{% endblock %}

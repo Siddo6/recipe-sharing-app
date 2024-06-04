@@ -1,0 +1,12 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<h3>YOU CAN BROWSE HERE ALL YOUR RECIPES</h3>
+<div class="go_back"><button class="back" id="back">Go back</button></div>
+<h4>You have created  {{ recipe_count }} recipes</h4>
+    <ul>
+        {% for recipe in user_recipes %}
+            <li><a href="{% url 'recipe_detail' recipe.id %}">{{ recipe.title|upper }} - {{ recipe.get_category_display }} </a></li> <br>
+        {% endfor %}
+    </ul>
+{% endblock %}

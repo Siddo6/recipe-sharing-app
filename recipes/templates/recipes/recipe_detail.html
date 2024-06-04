@@ -1,0 +1,60 @@
+{% extends 'core/base.html' %}
+{% load custom_filters %}
+
+{% block content %}
+{% if request.user == recipe.created_by %}
+<br>
+<div class="options">
+<button class="edit"><a href="{% url 'edit_recipe' recipe.id %}">Edit Recipe</a></button>
+
+<form method="post" action="{% url 'delete_recipe' recipe.id %}">
+    {% csrf_token %}
+    <input type="submit" value="Delete Recipe"  class="delete">
+</form>
+
+<div class="go_back"><button class="back" id="back">Go back</button></div>
+</div>
+{% endif %}
+<div class="details">
+    <h1>{{ recipe.title|upper }}</h1>
+    <p><strong>‣ INGREDIENTS: </strong>
+        <ul>
+            {% with recipe.ingredients|split_comma as ingredient_list %}
+                {% for ingredient in ingredient_list %}
+                <li>{{ ingredient }}</li>
+                {% endfor %}
+            {% endwith %}
+          </ul>
+    </p>
+    <p><strong>‣ INSTRUCTIONS:</strong> <br> <br>{{ recipe.instructions }}</p>
+    <p><strong>‣ DIFFICULTY:</strong> {{ recipe.difficulty|upper }}</p>
+    <p><strong>‣ CATEGORY:</strong> {{ recipe.get_category_display }}</p>
+    <p><strong>‣ COOKING TIME</strong> (not including preparation): {{ recipe.cooking_time }} min</p>
+</div>
+
+<div class="a">
+<h4>Comments</h4>
+{% if user.is_authenticated %}
+<button class="commentButton"><a href="{% url 'create_comments' recipe_id=recipe.id %}">ADD A COMMENT</a></button>
+{% endif %}
+</div>
+{% if recipe.comments.all %}
+  {% for comment in recipe.comments.all %}
+    <div class="comment">
+      <ul>
+        <li>
+          <div>{{ comment.comment }} - by {{ comment.created_by.name|title }} <br>{{ comment.created_at }}</div>
+          <div>
+            {% if user == comment.created_by %}
+              <button class="deleteButton"><a href="{% url 'delete_comment' comment_id=comment.id %}">DELETE THIS COMMENT</a></button>
+            {% endif %}
+          </div>
+        </li>
+      </ul>
+    </div>
+  {% endfor %}
+{% else %} 
+  <p style="padding-left: 12dvw;">No comments in this recipe</p>  
+{% endif %}
+
+{% endblock %}
