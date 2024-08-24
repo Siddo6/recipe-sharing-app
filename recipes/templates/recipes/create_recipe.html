@@ -1,16 +1,32 @@
 {% extends 'core/base.html' %}
 
 {% block content %}
+
+<style>
+
+    .create_form input[type="text"],
+    .create_form select,
+    .create_form textarea[name="ingredients"],
+    .create_form input[type="number"],
+    .create_form textarea[name="instructions"] {
+            width: 25rem;
+            height: 2rem;
+            background-color: #effbff;
+            border: none;
+            border-radius: 6px;
+        }
+
+
+</style>
 <br>
 <div class="go_back"><button class="back" id="back">Go back</button></div>
-
+<div class="create-container">
 <form method="post" action="{% url 'create_recipe' %}" class="create_form">
     {% csrf_token %}
     {{ form.as_p }}
 
-    <div>
-        <button class="create_recipe">POST RECIPE</button>
-    </div>
+     <button class="create_recipe">POST RECIPE</button>
 </form>
+</div>
 <br>
 {% endblock %}

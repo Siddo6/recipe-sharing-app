@@ -2,6 +2,37 @@
 {% load custom_filters %}
 
 {% block content %}
+<style>
+    .custom-shadow{
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  }
+
+  .details{
+    width: 80%;
+    display: block;
+    margin: 0 auto;
+    padding: 24px;
+  }
+
+  .commentButton{
+    display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 12rem;
+  background-color: #effbff;
+  /* box-shadow: 0 4px 8px #02598c; */
+  color: #006299;
+  border: none;
+  border-radius: 5px;
+  height: 1.8rem;
+  font-weight: 700;
+  font-size: 1rem;
+  }
+
+  .comment{
+    color: #006299;
+  }
+</style>
 {% if request.user == recipe.created_by %}
 <br>
 <div class="options">
@@ -15,7 +46,8 @@
 <div class="go_back"><button class="back" id="back">Go back</button></div>
 </div>
 {% endif %}
-<div class="details">
+<br>
+<div class="details custom-shadow">
     <h1>{{ recipe.title|upper }}</h1>
     <p><strong>‣ INGREDIENTS: </strong>
         <ul>
@@ -43,7 +75,7 @@
     <div class="comment">
       <ul>
         <li>
-          <div>{{ comment.comment }} - by {{ comment.created_by.name|title }} <br>{{ comment.created_at }}</div>
+          <div>{{ comment.comment }} <br> by {{ comment.created_by.name|title }} at {{ comment.created_at }}</div>
           <div>
             {% if user == comment.created_by %}
               <button class="deleteButton"><a href="{% url 'delete_comment' comment_id=comment.id %}">DELETE THIS COMMENT</a></button>
@@ -54,7 +86,7 @@
     </div>
   {% endfor %}
 {% else %} 
-  <p style="padding-left: 12dvw;">No comments in this recipe</p>  
+  <p style="padding-left: 12dvw; font-size: 18px;">No comments in this recipe</p>  
 {% endif %}
 
 {% endblock %}

@@ -6,24 +6,32 @@ body {
 }
 
 body {
-  background-color: rgb(120, 113, 170, 0.5);
+  background-color:#FFFFFF;
   display: grid;
   grid-template-rows: auto 1fr auto;
   min-height: 100vh;
+  color: #002a59;
 }
 
 nav,
 footer {
   width: 100%;
-  background-color: #4E5283;
+  background-color: #004e82;
   display: flex;
   align-items: center;
   height: 2rem;
   font-family: "Times New Roman", Times, serif;
 }
 
+
+
 nav {
   justify-content: space-between;
+  box-shadow: 0px 4px 8px #004e82b7;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: none;
+  transition: transform 0.3s ease-in-out;
 }
 
 footer {
@@ -33,13 +41,13 @@ footer {
 
 .buttons {
   display: flex;
-  gap: 2rem;
-  padding-right: 2rem;
+  gap: 1rem;
+  padding-right: 1rem;
 }
 
 .logo {
   padding-left: 2rem;
-  color: #DBD9E8;
+  color: #faf9ff;
   font-size: 1.2rem;
 }
 
@@ -63,17 +71,30 @@ footer {
 .login,
 .login_button,
 .logout{
-  background-color: #507FA5;
-  box-shadow: 0 4px 8px #02598c;
+  background-color: #2980B9  ;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.login:hover,
+.login_button:hover,
+.logout:hover{
+  background-color: #2065A8  ;
 }
 
 .register,
 .register_button {
-  background-color: #881607;
+  background-color: #8c1f4c;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2)
 }
 
+.register:hover,
+.register_button:hover {
+  background-color: #2065A8;
+}
+
+
 .logout{
-    margin-right: 2rem;
+    margin-right: 1rem;
 }
 
 
@@ -95,10 +116,16 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #999CC2;
+  
+  background-color: #4d7fb7;
   height: 2rem;
   padding-left: 2rem;
   padding-right: 2rem;
+  box-shadow: 0px 4px 8px #004e82b7;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: none;
+  transition: transform 0.3s ease-in-out;
 }
 
 
@@ -123,9 +150,7 @@ h3 {
 
 input {
   border: none;
-  border-radius: 5px;
-  height: 1.4rem;
-  width: 10rem;
+  border-radius: 6px;
 }
 
 .text {
@@ -159,18 +184,14 @@ label {
 .delete,
 .create_recipe
 {
-  width: 10rem;
-  background-color: #4E507E;
-  box-shadow: 0 4px 8px #02598c;
+  width: 15rem;
+  background-color: #0096fb;
+  box-shadow: 0 4px 8px #0c3045;
   color: white;
   text-transform: uppercase;
   border: none;
   border-radius: 5px;
   height: 1.5rem;
-}
-
-.create_form input{
-   width: 20rem;
 }
 
 .options {
@@ -200,8 +221,15 @@ label {
   font-size: 1.1rem;
 }
 
-input:hover, input:focus {
-  background-color: rgb(72, 158, 208, 0.2);
+.search-form input {
+  text-align: center;
+  width: 12rem;
+  height: 1.8rem;
+}
+
+.search-form button:hover {
+  background-color: #006299;
+  color: #effbff;
 }
 
 .homepage {
@@ -213,13 +241,13 @@ input:hover, input:focus {
 
 #back, #comment  {
   width: 10rem;
-  background-color: #4E507E;
-  box-shadow: 0 4px 8px #7A73AB;
+  background-color: #6291cb;
+  box-shadow: 0 4px 8px #6291cb;
   color: white;
   text-transform: uppercase;
   border: none;
   border-radius: 5px;
-  height: 1.5rem;
+  height: 1.8rem;
 }
 
 .go_back {
@@ -230,17 +258,20 @@ input:hover, input:focus {
 
 .search-form {
   display: inline-block;
+  
 }
 
 .search-button{
   display: inline-block;
   width: 5rem;
-  background-color: #507FA5;
+  background-color: #effbff;
   box-shadow: 0 4px 8px #02598c;
-  color: #ffffff;
+  color: #006299;
   border: none;
   border-radius: 5px;
-  height: 1.5rem;
+  height: 1.8rem;
+  font-weight: 700;
+  font-size: 0.9rem;
 }
 
 p {
@@ -255,15 +286,16 @@ h4 {
 
 .comment li {
   width: 70vw;
-  height: fit-content;
+  height: 3rem;
   min-height: 2rem;
-  background-color: #9A9BC1;
+  background-color: #f9f9f9;
   display: flex;
   align-items: center;
   place-content: start;
   padding-left: 2rem;
   justify-content: space-between;
-  border-radius: 25px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px #02598c;
 }
 
 .comment {
@@ -276,7 +308,7 @@ h4 {
 
 .commentButton, .deleteButton {
   width: 15rem;
-  background-color: #4E507E;
+  background-color: #006299;
   box-shadow: 0 4px 8px #02598c;
   color: #ffffff;
   border: none;
@@ -294,4 +326,20 @@ h4 {
 
 .deleteButton {
   margin-right: 2rem;
+}
+
+
+.all, .create-b, .profile{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 10rem;
+  background-color: #effbff;
+  /* box-shadow: 0 4px 8px #02598c; */
+  color: #006299;
+  border: none;
+  border-radius: 5px;
+  height: 1.8rem;
+  font-weight: 700;
+  font-size: 1rem;
 }
