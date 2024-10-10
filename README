@@ -1,0 +1,60 @@
+
+Recipe App
+
+### Overview
+This is my first ever project, and while the UI might not be perfect, 
+it represents the early stages of my learning journey. Over time, I've significantly improved my front-end skills,
+ and I'm proud of the solid backend functionality I've built into this application.
+The Recipe App allows users to share and discover new recipes. 
+Users can post their own recipes, explore others’ creations, leave comments. 
+
+### Features
+- Post Recipes: Users can create and share their own recipes.
+- Browse and Search: Browse recipes by categories or search for specific dishes.
+- Comment: Leave feedback on recipes.
+- User Profiles: Each user has a profile where their recipes are showcased.
+
+### Tech Stack
+- Backend: Django (Python)
+- Frontend: HTML, CSS, JavaScript
+- Database: SQLite
+
+### Installation
+#### Prerequisites:
+- Python 3.11.8
+- Django * will be automatically installed when you run the command pip install -r requirements.txt
+- Git
+
+#### Steps:
+1. Clone the repository:
+    git clone https://github.com/Siddo6/recipe-sharing-app.git
+    cd recipe-sharing-app
+
+2. Create and activate a virtual environment:
+    python -m venv venv
+    source venv/bin/activate   # For Linux/macOS
+    venv\Scripts\activate     # For Windows
+
+3. Install dependencies:
+    pip install -r requirements.txt
+
+4. Apply migrations to set up the database:
+    python manage.py migrate
+
+5. Run the development server:
+    python manage.py runserver
+
+6. Access the app at http://127.0.0.1:8000/.
+
+### Future Enhancements
+- Improve the UI: As my design skills have improved since building this project, I plan to enhance the user interface in future iterations.
+- Add New Features: I've been exploring more advanced backend features, which I intend to incorporate soon.
+- Favorites: Allow users to save their favorite recipes.
+- Recipe Collections: Users can create collections of their favorite or themed recipes (e.g., "Holiday Dishes").
+- Follow Other Users: Add the ability to follow other users and get notifications when they post new recipes.
+
+### Contributing
+Feel free to contribute by creating issues or submitting pull requests. Make sure to follow the standard guidelines and use feature branches for new functionality.
+
+### License
+This project is licensed under the MIT License. See the LICENSE file for details.
